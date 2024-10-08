@@ -8,11 +8,12 @@ const SingleTask = ({ id, task, isCompleted, is }) => {
   const dispatch = useDispatch();
   return (
     <li>
+      {!isEditing &&
       <input
         type="checkbox"
         checked={isCompleted}
         onChange={() => dispatch(completeTask(id))}
-      />
+      />}
       <label style={{ textDecoration: isCompleted ? 'line-through' : 'none' }}>{task}</label>
       {!isCompleted && <i className="fa fa-edit " onClick={()=> dispatch(editTask(id))}/>}
       {!isEditing && <i className="fa fa-trash "
